@@ -12,6 +12,8 @@ namespace MathForGamesDemo
     {
         public float Speed { get; set; } = 50;
 
+        private Color _color = Color.Blue;
+
         public override void Update(double deltaTime)
         {
             base.Update(deltaTime);
@@ -27,7 +29,12 @@ namespace MathForGamesDemo
             if (deltaMovement.Magnitude != 0)
             Transform.LocalPosition += (deltaMovement);
 
-            Raylib.DrawRectangleV(Transform.GlobalPosition, Transform.GlobalScale * 100, Color.Blue);
+            Raylib.DrawCircleV(Transform.GlobalPosition, (Transform.GlobalScale.x / 2 * 100), _color);
+        }
+
+        public override void OnCollision(Actor other)
+        {
+            _color = Color.Red;
         }
     }
 }
