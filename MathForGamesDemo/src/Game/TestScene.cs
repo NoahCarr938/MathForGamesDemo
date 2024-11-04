@@ -21,12 +21,14 @@ namespace MathForGamesDemo
             AddActor(actor);
             actor.Collider = new CircleCollider(actor, 60);
 
+            // Making our main player.
             _theBoi = Actor.Instantiate(new Actor("The Boi"), null, new Vector2(100, 100), 0);
             _theBoi.Collider = new CircleCollider(_theBoi, 50);
         }
 
         public override void Update(double deltaTime)
         {
+            // Making another circle
             base.Update(deltaTime);
             Raylib.DrawCircleV(_theBoi.Transform.GlobalPosition, 50, Color.Green);
         }

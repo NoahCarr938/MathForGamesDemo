@@ -8,6 +8,12 @@ using Raylib_cs;
 
 namespace MathForGamesDemo
 {
+    //internal class Player<T>
+    //{
+    //    public T Health { get; set; }
+    //}
+
+
     internal class Game
     {
         private static List<Scene> _scenes;
@@ -73,6 +79,9 @@ namespace MathForGamesDemo
 
             Scene testScene = new TestScene();
             AddScene(testScene);
+
+            //Player<int> intPLayer = new Player<int>();
+            //var hp = intPLayer.Health;
             
 
             while (!Raylib.WindowShouldClose())
@@ -80,7 +89,7 @@ namespace MathForGamesDemo
                 currentTime = stopwatch.ElapsedMilliseconds;
 
                 Raylib.BeginDrawing();
-                Raylib.ClearBackground(Color.White);
+                Raylib.ClearBackground(Color.Black);
 
                 CurrentScene.Update(deltaTime);
 
