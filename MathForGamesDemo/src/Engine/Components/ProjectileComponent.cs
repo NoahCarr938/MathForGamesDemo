@@ -8,13 +8,12 @@ using Raylib_cs;
 
 namespace MathForGamesDemo
 {
-    internal struct Asteroid
+    internal struct Projectile
     {
-        Vector2 position;
-        Vector2 speed;
-        float radius;
-        bool active;
-        Color color;
         
+    }
+    internal class ProjectileComponent : Component
+    {
+
     }
 }

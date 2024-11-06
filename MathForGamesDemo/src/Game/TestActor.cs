@@ -12,7 +12,7 @@ namespace MathForGamesDemo
     {
         public float Speed { get; set; } = 50;
 
-        private Color _color = Color.Blue;
+        private Color _color = Color.Gray;
 
         public override void Update(double deltaTime)
         {

@@ -142,10 +142,11 @@ namespace MathForGamesDemo
             return component;
         }
 
-        public T AddComponent<T>() where T : Component
+        public T AddComponent<T>() where T : Component, new()
         {
             // Making a new component, the owner is this actor, the result will be a component object and will cast to this class.
-            T component = (T)new Component(this);
+            T component = new T();
+            component.Owner = this;
             return AddComponent(component);
         }
 
@@ -185,6 +186,7 @@ namespace MathForGamesDemo
             // if a component was removed, assign temp over _components
             if (componentRemoved)
             {
+                component.End();
                 _components = temp;
             }
             return componentRemoved;

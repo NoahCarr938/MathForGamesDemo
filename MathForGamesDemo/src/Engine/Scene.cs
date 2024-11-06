@@ -29,6 +29,8 @@ namespace MathForGamesDemo
         {
            
             _actors = new List<Actor>();
+            Actor bob = new Actor("Bob");
+            //bob.AddComponent<HealthComponent>();
         }
 
         public virtual void Update(double deltaTime)

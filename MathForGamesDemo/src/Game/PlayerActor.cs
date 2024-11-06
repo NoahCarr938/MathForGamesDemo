@@ -12,7 +12,12 @@ namespace MathForGamesDemo
     {
         public float Speed { get; set; } = 50;
 
-        private Color _color = Color.White;
+
+        Vector2 v1 = new Vector2(150, 0);
+        Vector2 v2 = new Vector2(0, 50);
+        Vector2 v3 = new Vector2(100, 80);
+
+        private Color _color = Color.Green;
 
         public override void Update(double deltaTime)
         {
@@ -29,11 +34,12 @@ namespace MathForGamesDemo
             if (deltaMovement.Magnitude != 0)
                 Transform.LocalPosition += (deltaMovement);
 
-            //Vector2 v1 = new Vector2(100, 100);
-            //Vector2 v2 = new Vector2(100, 100);
-            //Vector2 v3 = new Vector2(100, 100);
+            Raylib.DrawTriangle(v1, v2, v3, Color.White);
 
-            Raylib.DrawCircleV(Transform.GlobalPosition, (Transform.GlobalScale.x / 2 * 100), _color);
+            Transform.GlobalPosition;
+            Transform.Translate
+
+            
         }
 
         public override void OnCollision(Actor other)
