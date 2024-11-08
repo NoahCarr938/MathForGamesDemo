@@ -10,8 +10,11 @@ namespace MathForGamesDemo
     internal class Scene
     {
         private List<Actor> _actors;
+        public float playerHealth = 3;
+        public bool gameOver = false;
+        public bool playerIsAlive = true;
 
-        
+
 
         public void AddActor(Actor actor)
         {
@@ -27,7 +30,7 @@ namespace MathForGamesDemo
 
         public virtual void Start()
         {
-           
+
             _actors = new List<Actor>();
             Actor bob = new Actor("Bob");
             //bob.AddComponent<HealthComponent>();
@@ -63,12 +66,80 @@ namespace MathForGamesDemo
                         {
                             _actors[row].OnCollision(_actors[column]);
                             _actors[column].OnCollision(_actors[row]);
+
+                            if (playerHealth == 0)
+                            {
+                                playerIsAlive = false;
+                            }
+
+                            while (!gameOver)
+                            {
+                                if (playerIsAlive = false)
+                                {
+                                    DisplayMainMenu();
+                                }
+                            }
+
+                            void DisplayMainMenu()
+                            {
+                                int input = GetInput("Do you want to play again?", "Yes", "No");
+
+                                if (input == 1)
+                                {
+                                    gameOver = false;
+                                    playerIsAlive = true;
+                                }
+                                else if (input == 2)
+                                {
+                                    gameOver = true;
+                                }
+                            }
+
+                            int GetInput(string description, string option1, string option2)
+                            {
+                                string input = "";
+                                int inputReceived = 0;
+
+                                // Input loop
+                                while (inputReceived != 1 && inputReceived != 2)
+                                {
+                                    // Print options
+                                    Console.WriteLine(description);
+                                    Console.WriteLine("1. " + option1);
+                                    Console.WriteLine("2. " + option2);
+                                    Console.Write("> ");
+
+                                    // Get input from player
+                                    input = Console.ReadLine();
+
+                                    // If player selected the first option
+                                    if (input == "1" || input == option1)
+                                    {
+                                        // Set inputReceived to be the first option
+                                        inputReceived = 1;
+                                    }
+                                    // Otherwise if the player selected the second option
+                                    else if (input == "2" || input == option2)
+                                    {
+                                        // Set inputReceived to be the second option
+                                        inputReceived = 2;
+                                    }
+                                    // If neither are true
+                                    else
+                                    {
+                                        // Display error message
+                                        Console.WriteLine("Invalid Input");
+                                        Console.ReadKey();
+                                    }
+                                }
+                                Console.Clear();
+                                return inputReceived;
+                            }
                         }
                     }
                 }
             }
         }
-
 
         public virtual void End()
         {
