@@ -13,7 +13,7 @@ namespace MathForGamesDemo
         public float Speed { get; set; } = 200;
         public float playerHealth = 3;
 
-        const float SCALE_MULTIPLIER = 100;
+        const float SCALE_MULTIPLIER = 80;
 
 
         //Vector2 v1 = new Vector2(150, 0);

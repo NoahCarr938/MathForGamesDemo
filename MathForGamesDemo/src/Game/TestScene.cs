@@ -17,6 +17,7 @@ namespace MathForGamesDemo
         public override void Start()
         {
             base.Start();
+
             Raylib.SetTargetFPS(60);
 
             //// Add our cool actor
@@ -33,7 +34,7 @@ namespace MathForGamesDemo
             actor.Transform.LocalPosition = new Vector2(300, 300);
             AddActor(actor);
             // The size of the collider for the circle
-            actor.Collider = new CircleCollider(actor, 75);
+            actor.Collider = new CircleCollider(actor, 65);
 
             Actor actor2 = new TurretActor();
             actor2.Transform.LocalPosition = new Vector2(300, 300);
@@ -43,7 +44,15 @@ namespace MathForGamesDemo
             _theSpaceship = Actor.Instantiate(new Actor("The Spaceship"), null, new Vector2(100, 100), 0);
             _theSpaceship.Collider = new CircleCollider(_theSpaceship, 50);
 
-            _theTurret = Actor.Instantiate(new Actor("The Turret"), 
+            _theTurret = Actor.Instantiate(new Actor("The Turret"), _theSpaceship.Transform);
+
+            //Component comp1 = _theTurret.AddComponent(new SpriteComponent(_theTurret, "1"));
+            //Component comp2 = _theTurret.AddComponent(new SpriteComponent(_theTurret, "2"));
+            //Component comp3 = _theTurret.AddComponent(new SpriteComponent(_theTurret, "3"));
+            //Component comp4 = _theTurret.AddComponent(new SpriteComponent(_theTurret, "4"));
+
+            //_theSpaceship.RemoveComponent(comp2);
+            //_theSpaceship.RemoveComponent(comp3);
         }
 
         public override void Update(double deltaTime)

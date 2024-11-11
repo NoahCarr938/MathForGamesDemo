@@ -10,9 +10,10 @@ namespace MathForGamesDemo
 {
     internal class TurretActor : Actor
     {
-        public float Speed { get; set; } = 100;
+        public float Speed { get; set; } = 200;
+        public float Rotate { get; set; } = 50;
         const float SCALE_MULTIPLIER = 50;
-        private Color _color = Color.White;
+        private Color _color = Color.Blue;
 
         public override void Update(double deltaTime)
         {
@@ -25,6 +26,11 @@ namespace MathForGamesDemo
             movementInput.x -= Raylib.IsKeyDown(KeyboardKey.A);
             movementInput.x += Raylib.IsKeyDown(KeyboardKey.D);
             Vector2 deltaMovement = movementInput.Normalized * Speed * (float)deltaTime;
+
+            // Rotation
+            Vector2 rotationInput = new Vector2();
+
+            
 
             if (deltaMovement.Magnitude != 0)
                 Transform.LocalPosition += (deltaMovement);
@@ -40,6 +46,7 @@ namespace MathForGamesDemo
             // Need to add a child to the "Player"
             // The child will be used for the projectiles and rotations
             // Rotation for the "Player"
+            // Add a main menu and restart game option.
 
 
 
