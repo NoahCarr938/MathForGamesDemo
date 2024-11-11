@@ -15,9 +15,13 @@ namespace MathForGamesDemo
         const float SCALE_MULTIPLIER = 50;
         private Color _color = Color.Blue;
 
+
+
         public override void Update(double deltaTime)
         {
             base.Update(deltaTime);
+            Actor _theTurret = new Actor();
+            Transform2D t1 = new Transform2D(_theTurret);
 
             // Movement
             Vector2 movementInput = new Vector2();
@@ -27,10 +31,14 @@ namespace MathForGamesDemo
             movementInput.x += Raylib.IsKeyDown(KeyboardKey.D);
             Vector2 deltaMovement = movementInput.Normalized * Speed * (float)deltaTime;
 
+
+
             // Rotation
-            Vector2 rotationInput = new Vector2();
 
             
+
+
+
 
             if (deltaMovement.Magnitude != 0)
                 Transform.LocalPosition += (deltaMovement);

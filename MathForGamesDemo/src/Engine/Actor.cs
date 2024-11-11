@@ -296,6 +296,10 @@ namespace MathForGamesDemo
 
         private void RemoveComponentsToBeRemoved()
         {
+            // If there are no components to remove, return
+            if (_componentsToRemove.Length <= 0)
+                return;
+
             // Create temp array for _components
             Component[] tempComponents = new Component[_components.Length];
             // Create temp array for _componentsToRemove
