@@ -17,6 +17,11 @@ namespace MathForGamesDemo
             CollisionRadius = radius;
         }
 
+        public CircleCollider(Component owner, float radius) :base(owner)
+        {
+            CollisionRadius = radius;
+        }
+
         public override bool CheckCollisionCircle(CircleCollider collider)
         {
             float sumRadii = collider.CollisionRadius + CollisionRadius;

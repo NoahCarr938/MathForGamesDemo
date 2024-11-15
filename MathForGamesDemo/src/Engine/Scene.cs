@@ -39,6 +39,7 @@ namespace MathForGamesDemo
         public virtual void Update(double deltaTime)
         {
             // Update actors
+            // Change this into a for loop
             foreach (Actor actor in _actors)
             {
                 if (!actor.Started)

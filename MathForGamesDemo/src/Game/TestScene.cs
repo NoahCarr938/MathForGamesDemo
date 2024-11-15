@@ -33,29 +33,23 @@ namespace MathForGamesDemo
             // Where the actor is located
             actor.Transform.LocalPosition = new Vector2(300, 300);
             AddActor(actor);
-            // The size of the collider for the circle
+            // The collider circle for the spaceship
             actor.Collider = new CircleCollider(actor, 60);
-
+            //Component.Collider = new CircleCollider()
             Actor actor2 = new TurretActor();
             actor2.Transform.LocalPosition = new Vector2(300, 300);
             AddActor(actor2);
 
-            Transform2D t1 = new Transform2D(_theTurret);
-            t1.Rotate(0.5f * Raylib.GetFrameTime());
-
             // Instantiate is used to add the actor to the scene.
-            _theSpaceship = Actor.Instantiate(new Actor("The Spaceship"), null, new Vector2(100, 100), 0);
+            Actor _theSpaceship = Actor.Instantiate(new Actor("The Spaceship"), null, new Vector2(100, 100), 0);
+            // A test for the collider
             _theSpaceship.Collider = new CircleCollider(_theSpaceship, 50);
 
-            _theTurret = Actor.Instantiate(new Actor("The Turret"), _theSpaceship.Transform);
+            Actor _theTurret = Actor.Instantiate(new Actor("The Turret"), _theSpaceship.Transform);
 
             Component comp1 = _theTurret.AddComponent(new ProjectileComponent(_theTurret, "1"));
-            //Component comp2 = _theTurret.AddComponent(new SpriteComponent(_theTurret, "2"));
-            //Component comp3 = _theTurret.AddComponent(new SpriteComponent(_theTurret, "3"));
-            //Component comp4 = _theTurret.AddComponent(new SpriteComponent(_theTurret, "4"));
 
             //_theSpaceship.RemoveComponent(comp2);
-            //_theSpaceship.RemoveComponent(comp3);
         }
 
         public override void Update(double deltaTime)
@@ -64,7 +58,7 @@ namespace MathForGamesDemo
             //Raylib.DrawCircleV(_theBoi.Transform.GlobalPosition, 50, Color.White);
 
             base.Update(deltaTime);
-            Raylib.DrawRectangleV(_theSpaceship.Transform.GlobalPosition, _theSpaceship.Transform.GlobalScale, Color.Green);
+            //Raylib.DrawRectangleV(_theSpaceship.Transform.GlobalPosition, _theSpaceship.Transform.GlobalScale, Color.Green);
 
         }
     }

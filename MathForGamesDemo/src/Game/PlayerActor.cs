@@ -11,6 +11,7 @@ namespace MathForGamesDemo
     internal class PlayerActor : Actor
     {
         public float Speed { get; set; } = 200;
+        public float playerSpeed { get; set; } = 2;
         public float playerHealth = 3;
 
         const float SCALE_MULTIPLIER = 80;
@@ -20,7 +21,7 @@ namespace MathForGamesDemo
         //Vector2 v2 = new Vector2(0, 50);
         //Vector2 v3 = new Vector2(100, 80);
 
-        private Color _color = Color.White;
+        private Color _color = Color.Beige;
 
         public override void Update(double deltaTime)
         {
@@ -37,8 +38,21 @@ namespace MathForGamesDemo
             if (deltaMovement.Magnitude != 0)
                 Transform.LocalPosition += (deltaMovement);
 
+            // Rotation
+            if (Raylib.IsKeyDown(KeyboardKey.Up))
+            {
+
+                Transform.Rotate(playerSpeed * -1 * (float)deltaTime);
+            }
+
+            if (Raylib.IsKeyDown(KeyboardKey.Down))
+            {
+
+                Transform.Rotate(playerSpeed * 1 * (float)deltaTime);
+            }
+
             // Creating the Rectangle or "Player"
-            Rectangle rec = new Rectangle(Transform.LocalPosition, Transform.LocalScale * SCALE_MULTIPLIER);
+            Rectangle rec = new Rectangle(Transform.LocalPosition, Transform.GlobalScale * SCALE_MULTIPLIER);
 
             // Drawing the Rectangle or "Player"
             Raylib.DrawRectanglePro(rec, new Vector2 (SCALE_MULTIPLIER/2, SCALE_MULTIPLIER/2), (float)(Transform.LocalRotationAngle * 180 / Math.PI), _color);

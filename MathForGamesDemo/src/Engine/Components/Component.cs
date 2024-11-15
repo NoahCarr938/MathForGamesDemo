@@ -33,6 +33,13 @@ namespace MathForGamesDemo
             }
         }
 
+        public Collider Collider { get; set; }
+
+        public virtual void OnCollision(Component other)
+        {
+
+        }
+
         public bool Started { get => _started; }
         public Component(Actor owner = null)
         {
