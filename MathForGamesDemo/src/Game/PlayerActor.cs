@@ -58,7 +58,7 @@ namespace MathForGamesDemo
             // Shows the direction that you are facing.
             Raylib.DrawLineV(Transform.GlobalPosition, Transform.GlobalPosition + Transform.Forward * 60, Color.Red);
 
-            Component comp1 = PlayerActor.AddComponent(new HealthComponent(PlayerActor, "1"));
+            //Component comp1 = PlayerActor.AddComponent(new HealthComponent(PlayerActor, "1"));
 
         }
 

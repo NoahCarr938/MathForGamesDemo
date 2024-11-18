@@ -1,8 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Numerics;
 using System.Text;
 using System.Threading.Tasks;
+using MathLibrary;
+using Raylib_cs;
 
 namespace MathForGamesDemo
 {
@@ -40,14 +43,17 @@ namespace MathForGamesDemo
         {
             // Update actors
             // Change this into a for loop
-            foreach (Actor actor in _actors)
+            for (int i = 0; i < _actors.Count; i++)
             {
+                Actor actor = _actors[i];
+
                 if (!actor.Started)
                     actor.Start();
 
                 actor.Update(deltaTime);
                 if (actor.Collider != null)
                     actor.Collider.Draw();
+
             }
 
             // Check for collision
@@ -77,65 +83,10 @@ namespace MathForGamesDemo
                             {
                                 if (playerIsAlive = false)
                                 {
-                                    DisplayMainMenu();
-                                }
-                            }
-
-                            void DisplayMainMenu()
-                            {
-                                int input = GetInput("Do you want to play again?", "Yes", "No");
-
-                                if (input == 1)
-                                {
-                                    gameOver = false;
-                                    playerIsAlive = true;
-                                }
-                                else if (input == 2)
-                                {
                                     gameOver = true;
                                 }
                             }
-
-                            int GetInput(string description, string option1, string option2)
-                            {
-                                string input = "";
-                                int inputReceived = 0;
-
-                                // Input loop
-                                while (inputReceived != 1 && inputReceived != 2)
-                                {
-                                    // Print options
-                                    Console.WriteLine(description);
-                                    Console.WriteLine("1. " + option1);
-                                    Console.WriteLine("2. " + option2);
-                                    Console.Write("> ");
-
-                                    // Get input from player
-                                    input = Console.ReadLine();
-
-                                    // If player selected the first option
-                                    if (input == "1" || input == option1)
-                                    {
-                                        // Set inputReceived to be the first option
-                                        inputReceived = 1;
-                                    }
-                                    // Otherwise if the player selected the second option
-                                    else if (input == "2" || input == option2)
-                                    {
-                                        // Set inputReceived to be the second option
-                                        inputReceived = 2;
-                                    }
-                                    // If neither are true
-                                    else
-                                    {
-                                        // Display error message
-                                        Console.WriteLine("Invalid Input");
-                                        Console.ReadKey();
-                                    }
-                                }
-                                Console.Clear();
-                                return inputReceived;
-                            }
+                            
                         }
                     }
                 }

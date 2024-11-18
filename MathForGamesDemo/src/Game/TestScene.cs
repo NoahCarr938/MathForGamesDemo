@@ -58,7 +58,7 @@ namespace MathForGamesDemo
             //Raylib.DrawCircleV(_theBoi.Transform.GlobalPosition, 50, Color.White);
 
             base.Update(deltaTime);
-            //Raylib.DrawRectangleV(_theSpaceship.Transform.GlobalPosition, _theSpaceship.Transform.GlobalScale, Color.Green);
+            
 
         }
     }

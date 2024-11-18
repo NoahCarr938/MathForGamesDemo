@@ -4,6 +4,7 @@ using System.Linq;
 using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Threading.Tasks;
+using MathForGamesDemo;
 using MathLibrary;
 using Raylib_cs;
 
@@ -11,6 +12,9 @@ namespace MathForGamesDemo
 {
     internal class TurretActor : Actor
     {
+
+        Actor _theTurret;
+        public float projectileCount = 100.0f;
         public float ProjectileSpeed { get; set; } = 200;
 
         public float TurretSpeed { get; set; } = 200;
@@ -19,7 +23,6 @@ namespace MathForGamesDemo
         private Color _colorTurret = Color.DarkBlue;
         private Color _colorBullet = Color.Green;
         private Color _colorCollision = Color.Red;
-        Vector2 projectileLaunch = new Vector2(100, 100);
 
         Vector2 v1 = new Vector2(150, 150);
 
@@ -57,13 +60,20 @@ namespace MathForGamesDemo
            }
 
            // Shooting mechanic for the turret
-           if (Raylib.IsKeyPressed(KeyboardKey.Space))
+           if (Raylib.IsKeyDown(KeyboardKey.Space))
            {
-                Actor _theBullet = Actor.Instantiate(new Actor("The Bullet"), null, new Vector2(100, 100), 0);
+                // Multiply GlobalRotationAngle by -1 so that it does not fire in the wrong direction.
+                Actor _theBullet = Actor.Instantiate(new ProjectileActor(), null, Transform.GlobalPosition, Transform.GlobalRotationAngle * -1, "The Bullet" );
+                projectileCount -= 1;
+                Console.WriteLine(projectileCount);
 
+                if (projectileCount == 0 && Raylib.IsKeyPressed(KeyboardKey.Space))
+                {
+                    //Actor.Destory()
+                }
            }
 
-
+           
             
 
             // Creating the Rectangle or "Player"
@@ -75,12 +85,26 @@ namespace MathForGamesDemo
             Raylib.DrawLineV(Transform.GlobalPosition, Transform.GlobalPosition + Transform.Forward * 60, Color.Red);
 
             // Add in projectiles
+            // Need to figure out how to stop shooting when out of ammo
+
             // Add in asteroids
+            // 3 asteroid that change into the other when they are shot, they also need to move.
+
             // Add a health component
+            // Once Health is 0 player should die and bring up respawn menu
+
+            // Add a border
+            // If the player is a little bit less than screen width then dont let them go past it
+
             // Projectiles that delete asteroids
+            // On collision asteroid changes, when at smallest asteroid disappear.
+
             // Add in a game over and restart function
+
             // Comment out MathLibraryDemo
+
             // Document Math Library
+
             // Submit assignments
 
 
