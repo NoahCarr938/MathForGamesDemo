@@ -11,12 +11,15 @@ namespace MathForGamesDemo
 {
     internal class TurretActor : Actor
     {
-        public float Speed { get; set; } = 200;
+        public float ProjectileSpeed { get; set; } = 200;
+
+        public float TurretSpeed { get; set; } = 200;
         public float RotationSpeed { get; set; } = 3;
         const float SCALE_MULTIPLIER = 50;
         private Color _colorTurret = Color.DarkBlue;
         private Color _colorBullet = Color.Green;
         private Color _colorCollision = Color.Red;
+        Vector2 projectileLaunch = new Vector2(100, 100);
 
         Vector2 v1 = new Vector2(150, 150);
 
@@ -33,12 +36,15 @@ namespace MathForGamesDemo
             movementInput.y += Raylib.IsKeyDown(KeyboardKey.S);
             movementInput.x -= Raylib.IsKeyDown(KeyboardKey.A);
             movementInput.x += Raylib.IsKeyDown(KeyboardKey.D);
-            Vector2 deltaMovement = movementInput.Normalized * Speed * (float)deltaTime;
+            Vector2 deltaMovement = movementInput.Normalized * TurretSpeed * (float)deltaTime;
+
+            if (deltaMovement.Magnitude != 0)
+                Transform.LocalPosition += (deltaMovement);
 
 
-         
-           // Rotation
-           if (Raylib.IsKeyDown(KeyboardKey.Left))
+
+            // Rotation
+            if (Raylib.IsKeyDown(KeyboardKey.Left))
            {
 
                 Transform.Rotate(RotationSpeed * -1 * (float)deltaTime);
@@ -53,13 +59,12 @@ namespace MathForGamesDemo
            // Shooting mechanic for the turret
            if (Raylib.IsKeyPressed(KeyboardKey.Space))
            {
-                //Transform.Translate(100, 100);
-                Raylib.DrawCircleV(v1, 10, _colorBullet);
+                Actor _theBullet = Actor.Instantiate(new Actor("The Bullet"), null, new Vector2(100, 100), 0);
+
            }
 
 
-            if (deltaMovement.Magnitude != 0)
-                Transform.LocalPosition += (deltaMovement);
+            
 
             // Creating the Rectangle or "Player"
             Rectangle rec = new Rectangle(Transform.LocalPosition, Transform.GlobalScale * SCALE_MULTIPLIER);
@@ -69,11 +74,14 @@ namespace MathForGamesDemo
             // Shows the direction that you are facing.
             Raylib.DrawLineV(Transform.GlobalPosition, Transform.GlobalPosition + Transform.Forward * 60, Color.Red);
 
-            // Need to add a child to the "Player"
-            // The child will be used for the projectiles and rotations
-            // Rotation for the "Player"
-            // Add a main menu and restart game option.
-
+            // Add in projectiles
+            // Add in asteroids
+            // Add a health component
+            // Projectiles that delete asteroids
+            // Add in a game over and restart function
+            // Comment out MathLibraryDemo
+            // Document Math Library
+            // Submit assignments
 
 
         }
@@ -81,6 +89,7 @@ namespace MathForGamesDemo
         public override void OnCollision(Actor other)
         {
             _colorCollision = Color.Red;
+
         }
 
     }

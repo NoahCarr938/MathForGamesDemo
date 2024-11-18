@@ -11,7 +11,7 @@ namespace MathForGamesDemo
     internal class TestScene : Scene
     {
         //Actor _theBoi;
-        Actor _theSpaceship;
+        Actor _thePlayer;
         Actor _theTurret;
 
         public override void Start()
@@ -41,13 +41,13 @@ namespace MathForGamesDemo
             AddActor(actor2);
 
             // Instantiate is used to add the actor to the scene.
-            Actor _theSpaceship = Actor.Instantiate(new Actor("The Spaceship"), null, new Vector2(100, 100), 0);
+            Actor _thePlayer = Actor.Instantiate(new Actor("The Player"), null, new Vector2(100, 100), 0);
             // A test for the collider
-            _theSpaceship.Collider = new CircleCollider(_theSpaceship, 50);
+            _thePlayer.Collider = new CircleCollider(_thePlayer, 50);
 
-            Actor _theTurret = Actor.Instantiate(new Actor("The Turret"), _theSpaceship.Transform);
+            Actor _theTurret = Actor.Instantiate(new Actor("The Turret"), _thePlayer.Transform);
 
-            Component comp1 = _theTurret.AddComponent(new ProjectileComponent(_theTurret, "1"));
+            //Component comp1 = _thePlayer.AddComponent(new HealthComponent(_thePlayer, "1"));
 
             //_theSpaceship.RemoveComponent(comp2);
         }

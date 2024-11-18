@@ -11,8 +11,7 @@ namespace MathForGamesDemo
     internal class PlayerActor : Actor
     {
         public float Speed { get; set; } = 200;
-        public float playerSpeed { get; set; } = 2;
-        public float playerHealth = 3;
+        private float RotationSpeed { get; set; } = 2;
 
         const float SCALE_MULTIPLIER = 80;
 
@@ -42,13 +41,13 @@ namespace MathForGamesDemo
             if (Raylib.IsKeyDown(KeyboardKey.Up))
             {
 
-                Transform.Rotate(playerSpeed * -1 * (float)deltaTime);
+                Transform.Rotate(RotationSpeed * -1 * (float)deltaTime);
             }
 
             if (Raylib.IsKeyDown(KeyboardKey.Down))
             {
 
-                Transform.Rotate(playerSpeed * 1 * (float)deltaTime);
+                Transform.Rotate(RotationSpeed * 1 * (float)deltaTime);
             }
 
             // Creating the Rectangle or "Player"
@@ -59,18 +58,12 @@ namespace MathForGamesDemo
             // Shows the direction that you are facing.
             Raylib.DrawLineV(Transform.GlobalPosition, Transform.GlobalPosition + Transform.Forward * 60, Color.Red);
 
-            // Need to add a child to the "Player"
-            // The child will be used for the projectiles and rotations
-            // Rotation for the "Player"
-            
+            Component comp1 = PlayerActor.AddComponent(new HealthComponent(PlayerActor, "1"));
 
-            
         }
 
         public override void OnCollision(Actor other)
         {
-            playerHealth -= 3;
-            Console.WriteLine(playerHealth);
             _color = Color.Red;
         }
 
