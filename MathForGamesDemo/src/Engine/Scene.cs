@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Numerics;
+using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Threading.Tasks;
 using MathLibrary;
@@ -16,6 +17,7 @@ namespace MathForGamesDemo
         public float playerHealth = 3;
         public bool gameOver = false;
         public bool playerIsAlive = true;
+        public bool hit = false;
 
 
 
@@ -42,7 +44,6 @@ namespace MathForGamesDemo
         public virtual void Update(double deltaTime)
         {
             // Update actors
-            // Change this into a for loop
             for (int i = 0; i < _actors.Count; i++)
             {
                 Actor actor = _actors[i];
@@ -91,6 +92,9 @@ namespace MathForGamesDemo
                     }
                 }
             }
+            // Add a border
+            // If the player is a little bit less than screen width then dont let them go past it
+            
         }
 
         public virtual void End()
@@ -98,6 +102,26 @@ namespace MathForGamesDemo
             foreach (Actor actor in _actors)
             {
                 actor.End();
+            }
+
+        }
+
+        public virtual void DrawGameOver()
+        {
+            Raylib.DrawText("Game Over!", 200, 200, 20, Color.White);
+        }
+
+        public virtual void DrawGamePaused()
+        {
+            Raylib.DrawText("The Game Is Paused, Click to resume or escape to quit", 200, 200, 20, Color.White);
+        }
+
+        public virtual void DrawMainMenu()
+        {
+            Raylib.DrawText("Click to play or escape to quit", 200, 200, 20, Color.White);
+            if (Raylib.IsKeyPressed(KeyboardKey.Escape))
+            {
+                gameOver = true;
             }
         }
 

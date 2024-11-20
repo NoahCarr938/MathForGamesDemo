@@ -14,7 +14,6 @@ namespace MathForGamesDemo
     {
 
         Actor _theTurret;
-        public float projectileCount = 100.0f;
         public float ProjectileSpeed { get; set; } = 200;
 
         public float TurretSpeed { get; set; } = 200;
@@ -60,21 +59,12 @@ namespace MathForGamesDemo
            }
 
            // Shooting mechanic for the turret
-           if (Raylib.IsKeyDown(KeyboardKey.Space))
+           if (Raylib.IsKeyPressed(KeyboardKey.Space))
            {
                 // Multiply GlobalRotationAngle by -1 so that it does not fire in the wrong direction.
                 Actor _theBullet = Actor.Instantiate(new ProjectileActor(), null, Transform.GlobalPosition, Transform.GlobalRotationAngle * -1, "The Bullet" );
-                projectileCount -= 1;
-                Console.WriteLine(projectileCount);
 
-                if (projectileCount == 0 && Raylib.IsKeyPressed(KeyboardKey.Space))
-                {
-                    //Actor.Destory()
-                }
            }
-
-           
-            
 
             // Creating the Rectangle or "Player"
             Rectangle rec = new Rectangle(Transform.LocalPosition, Transform.GlobalScale * SCALE_MULTIPLIER);
@@ -83,6 +73,8 @@ namespace MathForGamesDemo
             Raylib.DrawRectanglePro(rec, new Vector2(SCALE_MULTIPLIER / 2, SCALE_MULTIPLIER / 2), (float)(Transform.LocalRotationAngle * 180 / Math.PI), _colorTurret);
             // Shows the direction that you are facing.
             Raylib.DrawLineV(Transform.GlobalPosition, Transform.GlobalPosition + Transform.Forward * 60, Color.Red);
+
+            // Add in a transpose function
 
             // Add in projectiles
             // Need to figure out how to stop shooting when out of ammo
@@ -95,6 +87,7 @@ namespace MathForGamesDemo
 
             // Add a border
             // If the player is a little bit less than screen width then dont let them go past it
+            // Print out current position local to the console
 
             // Projectiles that delete asteroids
             // On collision asteroid changes, when at smallest asteroid disappear.
@@ -109,7 +102,6 @@ namespace MathForGamesDemo
 
 
         }
-
         public override void OnCollision(Actor other)
         {
             _colorCollision = Color.Red;

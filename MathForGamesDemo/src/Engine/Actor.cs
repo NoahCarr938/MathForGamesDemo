@@ -67,7 +67,8 @@ namespace MathForGamesDemo
             return actor;
         }
 
-        public static void Destory(Actor actor)
+
+        public static void Destroy(Actor actor)
         {
             // Remove all children
             foreach (Transform2D child in actor.Transform.Children)

@@ -12,7 +12,7 @@ namespace MathForGamesDemo
     {
        // private Texture2D _texture;
         private string _path;
-        private float Health = 100.0f;
+        public float Health = 100.0f;
        public HealthComponent(Actor owner, string path = "") : base(owner)
        {
             _path = path;

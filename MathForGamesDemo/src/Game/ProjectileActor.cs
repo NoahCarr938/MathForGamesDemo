@@ -14,17 +14,21 @@ namespace MathForGamesDemo
         public float projectileSpeed = 300;
         public float projectileCount = 100;
         public Color _colorCollision = Color.Red;
+        public bool bulletIsAlive = false;
 
         public override void Update(double deltaTime)
         {
             base.Update(deltaTime);
-            
+
             Transform.Translate(Transform.Forward * projectileSpeed * (float)deltaTime);
 
-            Raylib.DrawCircleV(Transform.LocalPosition, 10, _colorCollision);
             // Above code is to spawn projectiles from the top of the turret
-            // Need to spawn the projectile when (Space) is pressed
-            // Need a way of regaining bullets
+            Raylib.DrawCircleV(Transform.LocalPosition, 10, _colorCollision);
+            
+            
+            if (Transform.LocalPosition.x > Raylib.GetScreenWidth.y
+                || Transform.LocalPosition.y > Raylib.GetScreenHeight.X
+                ) { Game.RemoveActor(this); }
         }
 
         public override void OnCollision(Actor other)
