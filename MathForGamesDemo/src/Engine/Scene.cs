@@ -75,25 +75,23 @@ namespace MathForGamesDemo
                             _actors[row].OnCollision(_actors[column]);
                             _actors[column].OnCollision(_actors[row]);
 
-                            if (playerHealth == 0)
-                            {
-                                playerIsAlive = false;
-                            }
+                            //if (playerHealth == 0)
+                            //{
+                            //    playerIsAlive = false;
+                            //}
 
-                            while (!gameOver)
-                            {
-                                if (playerIsAlive = false)
-                                {
-                                    gameOver = true;
-                                }
-                            }
+                            //while (!gameOver)
+                            //{
+                            //    if (playerIsAlive = false)
+                            //    {
+                            //        gameOver = true;
+                            //    }
+                            //}
                             
                         }
                     }
                 }
             }
-            // Add a border
-            // If the player is a little bit less than screen width then dont let them go past it
             
         }
 
@@ -124,6 +122,5 @@ namespace MathForGamesDemo
                 gameOver = true;
             }
         }
-
     }
 }

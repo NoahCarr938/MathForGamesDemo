@@ -12,8 +12,8 @@ namespace MathForGamesDemo
     {
         public float Speed { get; set; } = 200;
         private float RotationSpeed { get; set; } = 2;
-
         const float SCALE_MULTIPLIER = 80;
+        Vector2 spawnPoint = new Vector2(250, 250);
 
 
         //Vector2 v1 = new Vector2(150, 0);
@@ -60,6 +60,35 @@ namespace MathForGamesDemo
 
             //Component comp1 = PlayerActor.AddComponent(new HealthComponent(PlayerActor, "1"));
 
+            // If the player goes out of bounds, respawn them at the spawnpoint
+            if (Transform.LocalPosition.x > Raylib.GetScreenWidth()
+                || Transform.LocalPosition.y > Raylib.GetScreenHeight()
+                )
+            {
+                // Spawn the vector back at spawnpoint
+                Transform.LocalPosition = spawnPoint;
+            }
+
+            if (Transform.LocalPosition.x <= 0
+                || Transform.LocalPosition.y <= 0
+                )
+            {
+                Transform.LocalPosition = spawnPoint;
+            }
+
+            //    if (Transform.LocalPosition.x > Raylib.GetScreenWidth()
+            //|| Transform.LocalPosition.y > Raylib.GetScreenHeight()
+            //)
+            //    {
+            //        Game.CurrentScene.RemoveActor(this);
+            //    }
+
+            //if (Transform.LocalPosition.x <= 0
+            //    || Transform.LocalPosition.y <= 0
+            //    )
+            //{
+            //    Game.CurrentScene.RemoveActor(this);
+            //}
         }
 
         public override void OnCollision(Actor other)

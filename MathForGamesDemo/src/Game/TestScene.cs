@@ -14,7 +14,8 @@ namespace MathForGamesDemo
         Actor _thePlayer;
         Actor _theTurret;
         Actor _theAsteroid;
-        public float projectileCount = 100.0f;
+        Actor _theBullet;
+        public float projectileSpeed = 200.0f;
 
         public override void Start()
         {
@@ -51,6 +52,12 @@ namespace MathForGamesDemo
             AddActor(turretActor);
             Actor _theTurret = Actor.Instantiate(new Actor("The Turret"), _thePlayer.Transform);
 
+            //Actor _thebullet = new ProjectileActor();
+            //AddActor(_thebullet);
+            
+            //Actor _theBullet = Actor.Instantiate(new Actor("Bullet"), null, new Vector2(100, 100), 0);
+            
+
             // To add a component
             //Component comp1 = _thePlayer.AddComponent(new HealthComponent(_thePlayer, "1"));
 
@@ -64,13 +71,6 @@ namespace MathForGamesDemo
             //Raylib.DrawCircleV(_theBoi.Transform.GlobalPosition, 50, Color.White);
 
             base.Update(deltaTime);
-
-            if (projectileCount == 0 && Raylib.IsKeyDown(KeyboardKey.Space))
-            {
-                //RemoveActor(_theBullet);
-            }
         }
-
-
     }
 }

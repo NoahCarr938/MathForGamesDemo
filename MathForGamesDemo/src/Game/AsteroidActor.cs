@@ -21,33 +21,7 @@ namespace MathForGamesDemo
         public override void Update(double deltaTime)
         {
             base.Update(deltaTime);
-            Vector2 movementInput = new Vector2();
-            movementInput.y -= Raylib.IsKeyPressed(KeyboardKey.W);
-            movementInput.y += Raylib.IsKeyPressed(KeyboardKey.S);
-            movementInput.x -= Raylib.IsKeyPressed(KeyboardKey.A);
-            movementInput.x += Raylib.IsKeyPressed(KeyboardKey.D);
-            Vector2 deltaMovement = movementInput.Normalized * _asteroidSpeed * (float)deltaTime;
-
-            if (deltaMovement.Magnitude != 0)
-                Transform.LocalPosition += (deltaMovement);
-
-            // The biggest asteroid
             Raylib.DrawCircleV(v2, 50, _color);
-
-            // Rotation
-            if (Raylib.IsKeyDown(KeyboardKey.Up))
-            {
-
-                Transform.Rotate(RotationSpeed * -1 * (float)deltaTime);
-            }
-
-            if (Raylib.IsKeyDown(KeyboardKey.Down))
-            {
-
-                Transform.Rotate(RotationSpeed * 1 * (float)deltaTime);
-            }
-
-
         }
         public virtual void Shrink(Actor other)
         {
@@ -58,8 +32,14 @@ namespace MathForGamesDemo
         }
         public override void OnCollision(Actor other)
         {
-            _colorCollison = Color.Red;
-            hit = true;
+           
+            
+            if (hit == true)
+            {
+                Console.WriteLine("hit");
+                _colorCollison = Color.Red;
+            }
+            //Game.CurrentScene.RemoveActor(this);
         }
     }
 }

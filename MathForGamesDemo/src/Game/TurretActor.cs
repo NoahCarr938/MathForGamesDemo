@@ -24,6 +24,7 @@ namespace MathForGamesDemo
         private Color _colorCollision = Color.Red;
 
         Vector2 v1 = new Vector2(150, 150);
+        Vector2 spawnPoint = new Vector2(250, 250);
 
 
         public override void Update(double deltaTime)
@@ -63,8 +64,8 @@ namespace MathForGamesDemo
            {
                 // Multiply GlobalRotationAngle by -1 so that it does not fire in the wrong direction.
                 Actor _theBullet = Actor.Instantiate(new ProjectileActor(), null, Transform.GlobalPosition, Transform.GlobalRotationAngle * -1, "The Bullet" );
-
-           }
+                _theBullet.Collider = new CircleCollider(_theBullet, 10);
+            }
 
             // Creating the Rectangle or "Player"
             Rectangle rec = new Rectangle(Transform.LocalPosition, Transform.GlobalScale * SCALE_MULTIPLIER);
@@ -74,10 +75,21 @@ namespace MathForGamesDemo
             // Shows the direction that you are facing.
             Raylib.DrawLineV(Transform.GlobalPosition, Transform.GlobalPosition + Transform.Forward * 60, Color.Red);
 
-            // Add in a transpose function
+            // If the player goes out of bounds respawn at spawnpoint
+            if (Transform.LocalPosition.x > Raylib.GetScreenWidth()
+                || Transform.LocalPosition.y > Raylib.GetScreenHeight()
+                )
+            {
+                // Spawn the vector back at spawnpoint
+                Transform.LocalPosition = spawnPoint;
+            }
 
-            // Add in projectiles
-            // Need to figure out how to stop shooting when out of ammo
+            if (Transform.LocalPosition.x <= 0
+                || Transform.LocalPosition.y <= 0
+                )
+            {
+                Transform.LocalPosition = spawnPoint;
+            }
 
             // Add in asteroids
             // 3 asteroid that change into the other when they are shot, they also need to move.
@@ -85,16 +97,13 @@ namespace MathForGamesDemo
             // Add a health component
             // Once Health is 0 player should die and bring up respawn menu
 
-            // Add a border
-            // If the player is a little bit less than screen width then dont let them go past it
-            // Print out current position local to the console
-
             // Projectiles that delete asteroids
             // On collision asteroid changes, when at smallest asteroid disappear.
+            // If on collision is player does not run.
 
             // Add in a game over and restart function
 
-            // Comment out MathLibraryDemo
+            // Comment out MathLibraryDemo and ReadME
 
             // Document Math Library
 
