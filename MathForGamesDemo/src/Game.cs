@@ -8,12 +8,6 @@ using Raylib_cs;
 
 namespace MathForGamesDemo
 {
-    //internal class Player<T>
-    //{
-    //    public T Health { get; set; }
-    //}
-
-
     internal class Game
     {
         public bool gameOver = false;
@@ -80,6 +74,8 @@ namespace MathForGamesDemo
             long lastTime = 0;
             double deltaTime = 1;
 
+            Scene MainMenu = new MainMenu();
+            AddScene(MainMenu);
             Scene testScene = new TestScene();
             AddScene(testScene);
 

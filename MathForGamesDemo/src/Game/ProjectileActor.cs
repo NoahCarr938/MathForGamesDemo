@@ -20,9 +20,10 @@ namespace MathForGamesDemo
         {
             base.Update(deltaTime);
 
+            // Movement for the projectile
             Transform.Translate(Transform.Forward * projectileSpeed * (float)deltaTime);
 
-            // Above code is to spawn projectiles from the top of the turret
+            // Spawns projectiles from the top of the turret
             Raylib.DrawCircleV(Transform.LocalPosition, 10, _colorCollision);
             
             // Removing the projectiles once they get out of view
@@ -39,15 +40,24 @@ namespace MathForGamesDemo
             { 
                 Game.CurrentScene.RemoveActor(this); 
             }
-
+            
             
         }
 
         public override void OnCollision(Actor other)
         {
             
-            _colorCollision = Color.Red;
-            //Game.CurrentScene.RemoveActor(this);
+            if (other is PlayerActor)
+            {
+                return;
+            }
+            else if (other is AsteroidActor)
+            {
+                _colorCollision = Color.Red;
+                Game.CurrentScene.RemoveActor(this);
+            }
+
+
         }
     }
 }

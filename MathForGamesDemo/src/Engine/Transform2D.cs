@@ -128,18 +128,6 @@ namespace MathForGamesDemo
 
         public void AddChild(Transform2D child)
         {
-            /*
-             * arr tempArray set to new array[old.length + 1]
-             * for each child in old array
-             *  copy child to new array
-             *  
-             *  tempArray[old.length] set to new child
-             *  
-             *  set child to this instance
-             *  
-             *  set old array to new array
-             */
-
 
             // DO not add the child if it is this transform's parent
             if (child == _parent)
@@ -226,7 +214,4 @@ namespace MathForGamesDemo
             }
         }
     }
-
-    // When you get somthing you just want to return something. It should not change or alter anything unless documentation says so.
-    // When you set something you want to update or change something.
 }

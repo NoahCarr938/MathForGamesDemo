@@ -14,6 +14,7 @@ namespace MathForGamesDemo
         private float RotationSpeed { get; set; } = 2;
         const float SCALE_MULTIPLIER = 80;
         Vector2 spawnPoint = new Vector2(250, 250);
+        public bool gameOver = false;
 
 
         //Vector2 v1 = new Vector2(150, 0);
@@ -76,25 +77,22 @@ namespace MathForGamesDemo
                 Transform.LocalPosition = spawnPoint;
             }
 
-            //    if (Transform.LocalPosition.x > Raylib.GetScreenWidth()
-            //|| Transform.LocalPosition.y > Raylib.GetScreenHeight()
-            //)
-            //    {
-            //        Game.CurrentScene.RemoveActor(this);
-            //    }
-
-            //if (Transform.LocalPosition.x <= 0
-            //    || Transform.LocalPosition.y <= 0
-            //    )
-            //{
-            //    Game.CurrentScene.RemoveActor(this);
-            //}
+            
         }
 
         public override void OnCollision(Actor other)
         {
-            _color = Color.Red;
+            if (other is ProjectileActor)
+            {
+                return;
+            }
+            else if (other is AsteroidActor)
+            {
+                _color = Color.Red;
+                Game.CurrentScene = Game.GetScene(0);
+            }
         }
 
+        
     }
 }

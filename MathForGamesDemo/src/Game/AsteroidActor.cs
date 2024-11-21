@@ -14,32 +14,48 @@ namespace MathForGamesDemo
         public float _asteroidSpeed = 20;
         public float RotationSpeed = 20;
         public Color _color = Color.White;
-        public Color _colorCollison = Color.Red;
-        Vector2 v2 = new Vector2(100, 100);
+        public Color _colorCollision = Color.Red;
+        public float asteroidSize = 50;
         public bool hit = false;
 
         public override void Update(double deltaTime)
         {
             base.Update(deltaTime);
-            Raylib.DrawCircleV(v2, 50, _color);
-        }
-        public virtual void Shrink(Actor other)
-        {
-            if (hit == true)
+            Raylib.DrawCircleV(Transform.LocalPosition, asteroidSize, _color);
+
+            // If the asteroid is hit shrink and remove the asteroid
+            if (hit)
             {
-                Raylib.DrawCircleV(v2, 25, _color);
+                Shrink();
             }
         }
+        // Shrinks the asteroid and then removes it 
+        public virtual void Shrink()
+        {
+            if (asteroidSize > 10)
+            {
+                asteroidSize *= 0.9f;
+            }
+            else if (asteroidSize < 10)
+            {
+                Game.CurrentScene.RemoveActor(this);
+            }
+
+        }
+        // Collision for the asteroid
         public override void OnCollision(Actor other)
         {
-           
-            
-            if (hit == true)
+            if (other is ProjectileActor)
             {
-                Console.WriteLine("hit");
-                _colorCollison = Color.Red;
+                hit = true;
+                _color = Color.Red;
+
             }
-            //Game.CurrentScene.RemoveActor(this);
+            else if (other is PlayerActor)
+            {
+                _color = Color.Red;
+            }
+            
         }
     }
 }

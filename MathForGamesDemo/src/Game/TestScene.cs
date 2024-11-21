@@ -11,10 +11,12 @@ namespace MathForGamesDemo
     internal class TestScene : Scene
     {
         //Actor _theBoi;
-        Actor _thePlayer;
-        Actor _theTurret;
-        Actor _theAsteroid;
-        Actor _theBullet;
+        public Actor _thePlayer;
+        public Actor _theTurret;
+        public Actor _theAsteroid;
+        public Actor _theAsteroid2;
+        public Actor _theAsteroid3;
+        public Actor _theBullet;
         public float projectileSpeed = 200.0f;
 
         public override void Start()
@@ -27,12 +29,27 @@ namespace MathForGamesDemo
             // Adding the actor
             Actor Asteroid = new AsteroidActor();
             // Where the actor is located
-            Asteroid.Transform.LocalPosition = new Vector2(200, 200);
+            Asteroid.Transform.LocalPosition = new Vector2(100, 100);
             AddActor(Asteroid);
-            // Adding the actor to the scene
             Actor _theAsteroid = Actor.Instantiate(new Actor("Asteroid"), null, new Vector2(100, 100), 0);
+            Asteroid.Collider = new CircleCollider(Asteroid, 60);
+            // Adding the actor to the scene
+            
             // The collider for the asteroid
-            _theAsteroid.Collider = new CircleCollider(_theAsteroid, 50);
+
+            Actor Asteroid2 = new AsteroidActor();
+            Asteroid2.Transform.LocalPosition = new Vector2(600, 300);
+            AddActor(Asteroid2);
+            Actor _theAsteroid2 = Actor.Instantiate(new Actor("Asteroid"), null, new Vector2(600, 300), 0);
+
+            Asteroid2.Collider = new CircleCollider(Asteroid2, 60);
+            
+            Actor Asteroid3 = new AsteroidActor();
+            Asteroid3.Transform.LocalPosition = new Vector2(450, 400);
+            AddActor(Asteroid3);
+            Actor _theAsteroid3 = Actor.Instantiate(new Actor("Asteroid"), null, new Vector2(450, 400), 0);
+            Asteroid3.Collider = new CircleCollider(Asteroid3, 60);
+           
 
 
             // Adding the actor
@@ -71,6 +88,7 @@ namespace MathForGamesDemo
             //Raylib.DrawCircleV(_theBoi.Transform.GlobalPosition, 50, Color.White);
 
             base.Update(deltaTime);
+
         }
     }
 }

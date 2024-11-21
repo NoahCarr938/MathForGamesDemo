@@ -65,7 +65,7 @@ namespace MathForGamesDemo
                 // Multiply GlobalRotationAngle by -1 so that it does not fire in the wrong direction.
                 Actor _theBullet = Actor.Instantiate(new ProjectileActor(), null, Transform.GlobalPosition, Transform.GlobalRotationAngle * -1, "The Bullet" );
                 _theBullet.Collider = new CircleCollider(_theBullet, 10);
-            }
+           }
 
             // Creating the Rectangle or "Player"
             Rectangle rec = new Rectangle(Transform.LocalPosition, Transform.GlobalScale * SCALE_MULTIPLIER);
@@ -91,19 +91,13 @@ namespace MathForGamesDemo
                 Transform.LocalPosition = spawnPoint;
             }
 
-            // Add in asteroids
+            // Add in asteroid spawner
             // 3 asteroid that change into the other when they are shot, they also need to move.
-
-            // Add a health component
-            // Once Health is 0 player should die and bring up respawn menu
-
-            // Projectiles that delete asteroids
-            // On collision asteroid changes, when at smallest asteroid disappear.
-            // If on collision is player does not run.
+            // Needs to use scale
 
             // Add in a game over and restart function
 
-            // Comment out MathLibraryDemo and ReadME
+            // MathLibraryDemo ReadME and comment out MathLibrary
 
             // Document Math Library
 
