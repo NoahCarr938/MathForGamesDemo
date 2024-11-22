@@ -32,7 +32,7 @@ namespace MathForGamesDemo
             Asteroid.Transform.LocalPosition = new Vector2(100, 100);
             AddActor(Asteroid);
             Actor _theAsteroid = Actor.Instantiate(new Actor("Asteroid"), null, new Vector2(100, 100), 0);
-            Asteroid.Collider = new CircleCollider(Asteroid, 60);
+            Asteroid.Collider = new CircleCollider(Asteroid, 50);
             // Adding the actor to the scene
             
             // The collider for the asteroid
@@ -42,13 +42,13 @@ namespace MathForGamesDemo
             AddActor(Asteroid2);
             Actor _theAsteroid2 = Actor.Instantiate(new Actor("Asteroid"), null, new Vector2(600, 300), 0);
 
-            Asteroid2.Collider = new CircleCollider(Asteroid2, 60);
+            Asteroid2.Collider = new CircleCollider(Asteroid2, 50);
             
             Actor Asteroid3 = new AsteroidActor();
             Asteroid3.Transform.LocalPosition = new Vector2(450, 400);
             AddActor(Asteroid3);
             Actor _theAsteroid3 = Actor.Instantiate(new Actor("Asteroid"), null, new Vector2(450, 400), 0);
-            Asteroid3.Collider = new CircleCollider(Asteroid3, 60);
+            Asteroid3.Collider = new CircleCollider(Asteroid3, 50);
            
 
 
@@ -68,12 +68,6 @@ namespace MathForGamesDemo
             turretActor.Transform.LocalPosition = new Vector2(300, 300);
             AddActor(turretActor);
             Actor _theTurret = Actor.Instantiate(new Actor("The Turret"), _thePlayer.Transform);
-
-            //Actor _thebullet = new ProjectileActor();
-            //AddActor(_thebullet);
-            
-            //Actor _theBullet = Actor.Instantiate(new Actor("Bullet"), null, new Vector2(100, 100), 0);
-            
 
             // To add a component
             //Component comp1 = _thePlayer.AddComponent(new HealthComponent(_thePlayer, "1"));

@@ -16,6 +16,7 @@ namespace MathForGamesDemo
             Owner = owner;
         }
 
+        // Checks to see if collision has occurred
         public bool CheckCollision(Actor other)
         {
             if (other.Collider != null && other.Collider is CircleCollider)

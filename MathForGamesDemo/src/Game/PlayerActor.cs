@@ -89,10 +89,8 @@ namespace MathForGamesDemo
             else if (other is AsteroidActor)
             {
                 _color = Color.Red;
-                Game.CurrentScene = Game.GetScene(0);
+                Game.CurrentScene = Game.GetScene(2);
             }
         }
-
-        
     }
 }

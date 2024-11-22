@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using MathLibrary;
 using Raylib_cs;
 
+// Not using this component
 namespace MathForGamesDemo
 {
     internal class SpriteComponent : Component

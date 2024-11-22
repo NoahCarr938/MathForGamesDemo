@@ -74,20 +74,6 @@ namespace MathForGamesDemo
                         {
                             _actors[row].OnCollision(_actors[column]);
                             _actors[column].OnCollision(_actors[row]);
-
-                            //if (playerHealth == 0)
-                            //{
-                            //    playerIsAlive = false;
-                            //}
-
-                            //while (!gameOver)
-                            //{
-                            //    if (playerIsAlive = false)
-                            //    {
-                            //        gameOver = true;
-                            //    }
-                            //}
-                            
                         }
                     }
                 }
@@ -102,25 +88,6 @@ namespace MathForGamesDemo
                 actor.End();
             }
 
-        }
-
-        public virtual void DrawGameOver()
-        {
-            Raylib.DrawText("Game Over!", 200, 200, 20, Color.White);
-        }
-
-        public virtual void DrawGamePaused()
-        {
-            Raylib.DrawText("The Game Is Paused, Click to resume or escape to quit", 200, 200, 20, Color.White);
-        }
-
-        public virtual void DrawMainMenu()
-        {
-            Raylib.DrawText("Click to play or escape to quit", 200, 200, 20, Color.White);
-            if (Raylib.IsKeyPressed(KeyboardKey.Escape))
-            {
-                gameOver = true;
-            }
         }
     }
 }

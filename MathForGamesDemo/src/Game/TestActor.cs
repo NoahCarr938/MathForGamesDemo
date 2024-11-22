@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using MathLibrary;
 using Raylib_cs;
 
+// Not using this class, purely for tests
 namespace MathForGamesDemo
 {
     internal class TestActor : Actor

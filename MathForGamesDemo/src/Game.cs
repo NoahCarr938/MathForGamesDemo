@@ -78,6 +78,8 @@ namespace MathForGamesDemo
             AddScene(MainMenu);
             Scene testScene = new TestScene();
             AddScene(testScene);
+            Scene Scene2 = new Scene2();
+            AddScene(Scene2);
 
             //Player<int> intPLayer = new Player<int>();
             //var hp = intPLayer.Health;

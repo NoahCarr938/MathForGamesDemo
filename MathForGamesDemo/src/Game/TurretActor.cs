@@ -90,20 +90,6 @@ namespace MathForGamesDemo
             {
                 Transform.LocalPosition = spawnPoint;
             }
-
-            // Add in asteroid spawner
-            // 3 asteroid that change into the other when they are shot, they also need to move.
-            // Needs to use scale
-
-            // Add in a game over and restart function
-
-            // MathLibraryDemo ReadME and comment out MathLibrary
-
-            // Document Math Library
-
-            // Submit assignments
-
-
         }
         public override void OnCollision(Actor other)
         {

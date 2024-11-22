@@ -15,11 +15,12 @@ namespace MathForGamesDemo
         public float projectileCount = 100;
         public Color _colorCollision = Color.Green;
         public bool bulletIsAlive = false;
+        public string Score;
 
         public override void Update(double deltaTime)
         {
             base.Update(deltaTime);
-
+            Raylib.DrawText(Score, 70, 70, 100, Color.White);
             // Movement for the projectile
             Transform.Translate(Transform.Forward * projectileSpeed * (float)deltaTime);
 
@@ -54,6 +55,7 @@ namespace MathForGamesDemo
             else if (other is AsteroidActor)
             {
                 _colorCollision = Color.Red;
+                
                 Game.CurrentScene.RemoveActor(this);
             }
 
