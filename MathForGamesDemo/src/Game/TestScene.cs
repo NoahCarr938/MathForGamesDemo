@@ -10,15 +10,6 @@ namespace MathForGamesDemo
 {
     internal class TestScene : Scene
     {
-        //Actor _theBoi;
-        public Actor _thePlayer;
-        public Actor _theTurret;
-        public Actor _theAsteroid;
-        public Actor _theAsteroid2;
-        public Actor _theAsteroid3;
-        public Actor _theBullet;
-        public float projectileSpeed = 200.0f;
-
         public override void Start()
         {
             base.Start();
@@ -27,47 +18,38 @@ namespace MathForGamesDemo
 
             // Large Asteroid
             // Adding the actor
-            Actor Asteroid = new AsteroidActor();
-            // Where the actor is located
-            Asteroid.Transform.LocalPosition = new Vector2(100, 100);
-            AddActor(Asteroid);
-            Actor _theAsteroid = Actor.Instantiate(new Actor("Asteroid"), null, new Vector2(100, 100), 0);
-            Asteroid.Collider = new CircleCollider(Asteroid, 50);
+            //Actor Asteroid = new AsteroidActor();
+            //// Where the actor is located
+            //Asteroid.Transform.LocalPosition = new Vector2(100, 100);
+            //AddActor(Asteroid);
+            //Actor _theAsteroid = Actor.Instantiate(new Actor("Asteroid"), null, new Vector2(100, 100), 0);
+            //Asteroid.Collider = new CircleCollider(Asteroid, 50);
             // Adding the actor to the scene
             
             // The collider for the asteroid
 
-            Actor Asteroid2 = new AsteroidActor();
-            Asteroid2.Transform.LocalPosition = new Vector2(600, 300);
-            AddActor(Asteroid2);
-            Actor _theAsteroid2 = Actor.Instantiate(new Actor("Asteroid"), null, new Vector2(600, 300), 0);
+            //Actor Asteroid2 = new AsteroidActor();
+            //Asteroid2.Transform.LocalPosition = new Vector2(600, 300);
+            //AddActor(Asteroid2);
+            //Actor _theAsteroid2 = Actor.Instantiate(new Actor("Asteroid"), null, new Vector2(600, 300), 0);
 
-            Asteroid2.Collider = new CircleCollider(Asteroid2, 50);
+            //Asteroid2.Collider = new CircleCollider(Asteroid2, 50);
             
-            Actor Asteroid3 = new AsteroidActor();
-            Asteroid3.Transform.LocalPosition = new Vector2(450, 400);
-            AddActor(Asteroid3);
-            Actor _theAsteroid3 = Actor.Instantiate(new Actor("Asteroid"), null, new Vector2(450, 400), 0);
-            Asteroid3.Collider = new CircleCollider(Asteroid3, 50);
+            //Actor Asteroid3 = new AsteroidActor();
+            //Asteroid3.Transform.LocalPosition = new Vector2(450, 400);
+            //AddActor(Asteroid3);
+            //Actor _theAsteroid3 = Actor.Instantiate(new Actor("Asteroid"), null, new Vector2(450, 400), 0);
+            //Asteroid3.Collider = new CircleCollider(Asteroid3, 50);
            
 
-
-            // Adding the actor
-            Actor actor = new PlayerActor();
-            // Where the actor is located
-            actor.Transform.LocalPosition = new Vector2(300, 300);
-            AddActor(actor);
-            // The collider circle for the spaceship
-            actor.Collider = new CircleCollider(actor, 60);
+            // The bottom
             // Instantiate is used to add the actor to the scene.
-            Actor _thePlayer = Actor.Instantiate(new Actor("The Player"), null, new Vector2(100, 100), 0);
-            // A test for the collider
-            //_thePlayer.Collider = new CircleCollider(_thePlayer, 50);
+            Actor _thePlayer = Actor.Instantiate(new PlayerActor(), null, new Vector2(300, 300), 0);
+            // The collider circle for the spaceship
+            _thePlayer.Collider = new CircleCollider(_thePlayer, 60);
 
-            Actor turretActor = new TurretActor();
-            turretActor.Transform.LocalPosition = new Vector2(300, 300);
-            AddActor(turretActor);
-            Actor _theTurret = Actor.Instantiate(new Actor("The Turret"), _thePlayer.Transform);
+
+            Actor _theTurret = Actor.Instantiate(new TurretActor(), _thePlayer.Transform);
 
             // To add a component
             //Component comp1 = _thePlayer.AddComponent(new HealthComponent(_thePlayer, "1"));

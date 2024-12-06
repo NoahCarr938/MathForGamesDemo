@@ -13,7 +13,7 @@ namespace MathForGamesDemo
         public float Speed { get; set; } = 200;
         private float RotationSpeed { get; set; } = 2;
         const float SCALE_MULTIPLIER = 80;
-        Vector2 spawnPoint = new Vector2(250, 250);
+        //Vector2 spawnPoint = new Vector2(250, 250);
         public bool gameOver = false;
 
 
@@ -22,6 +22,7 @@ namespace MathForGamesDemo
         //Vector2 v3 = new Vector2(100, 80);
 
         private Color _color = Color.Beige;
+        
 
         public override void Update(double deltaTime)
         {
@@ -51,6 +52,8 @@ namespace MathForGamesDemo
                 Transform.Rotate(RotationSpeed * 1 * (float)deltaTime);
             }
 
+            
+
             // Creating the Rectangle or "Player"
             Rectangle rec = new Rectangle(Transform.LocalPosition, Transform.GlobalScale * SCALE_MULTIPLIER);
 
@@ -62,20 +65,20 @@ namespace MathForGamesDemo
             //Component comp1 = PlayerActor.AddComponent(new HealthComponent(PlayerActor, "1"));
 
             // If the player goes out of bounds, respawn them at the spawnpoint
-            if (Transform.LocalPosition.x > Raylib.GetScreenWidth()
-                || Transform.LocalPosition.y > Raylib.GetScreenHeight()
-                )
-            {
-                // Spawn the vector back at spawnpoint
-                Transform.LocalPosition = spawnPoint;
-            }
+            //if (Transform.LocalPosition.x > Raylib.GetScreenWidth()
+            //    || Transform.LocalPosition.y > Raylib.GetScreenHeight()
+            //    )
+            //{
+            //    // Spawn the vector back at spawnpoint
+            //    Transform.LocalPosition = spawnPoint;
+            //}
 
-            if (Transform.LocalPosition.x <= 0
-                || Transform.LocalPosition.y <= 0
-                )
-            {
-                Transform.LocalPosition = spawnPoint;
-            }
+            //if (Transform.LocalPosition.x <= 0
+            //    || Transform.LocalPosition.y <= 0
+            //    )
+            //{
+            //    Transform.LocalPosition = spawnPoint;
+            //}
 
             
         }
