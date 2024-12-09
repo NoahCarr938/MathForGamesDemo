@@ -16,31 +16,26 @@ namespace MathForGamesDemo
 
             Raylib.SetTargetFPS(60);
 
-            // Large Asteroid
-            // Adding the actor
-            //Actor Asteroid = new AsteroidActor();
-            //// Where the actor is located
-            //Asteroid.Transform.LocalPosition = new Vector2(100, 100);
-            //AddActor(Asteroid);
-            //Actor _theAsteroid = Actor.Instantiate(new Actor("Asteroid"), null, new Vector2(100, 100), 0);
-            //Asteroid.Collider = new CircleCollider(Asteroid, 50);
-            // Adding the actor to the scene
-            
-            // The collider for the asteroid
 
-            //Actor Asteroid2 = new AsteroidActor();
-            //Asteroid2.Transform.LocalPosition = new Vector2(600, 300);
-            //AddActor(Asteroid2);
-            //Actor _theAsteroid2 = Actor.Instantiate(new Actor("Asteroid"), null, new Vector2(600, 300), 0);
+            Actor Asteroid = new AsteroidActor();
+            Asteroid.Transform.LocalPosition = new Vector2(100, 100);
+            AddActor(Asteroid);
+            Actor _theAsteroid = Actor.Instantiate(new Actor("Asteroid"), null, new Vector2(100, 100), 0);
+            Asteroid.Collider = new CircleCollider(Asteroid, 50);
 
-            //Asteroid2.Collider = new CircleCollider(Asteroid2, 50);
-            
-            //Actor Asteroid3 = new AsteroidActor();
-            //Asteroid3.Transform.LocalPosition = new Vector2(450, 400);
-            //AddActor(Asteroid3);
-            //Actor _theAsteroid3 = Actor.Instantiate(new Actor("Asteroid"), null, new Vector2(450, 400), 0);
-            //Asteroid3.Collider = new CircleCollider(Asteroid3, 50);
-           
+
+            Actor Asteroid2 = new AsteroidActor();
+            Asteroid2.Transform.LocalPosition = new Vector2(600, 300);
+            AddActor(Asteroid2);
+            Actor _theAsteroid2 = Actor.Instantiate(new Actor("Asteroid"), null, new Vector2(600, 300), 0);
+            Asteroid2.Collider = new CircleCollider(Asteroid2, 50);
+
+            Actor Asteroid3 = new AsteroidActor();
+            Asteroid3.Transform.LocalPosition = new Vector2(450, 400);
+            AddActor(Asteroid3);
+            Actor _theAsteroid3 = Actor.Instantiate(new Actor("Asteroid"), null, new Vector2(450, 400), 0);
+            Asteroid3.Collider = new CircleCollider(Asteroid3, 50);
+
 
             // The bottom
             // Instantiate is used to add the actor to the scene.

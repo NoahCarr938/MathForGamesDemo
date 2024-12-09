@@ -30,7 +30,7 @@ namespace MathForGamesDemo
         {
             base.Update(deltaTime);
 
-
+            
             // Rotation
             if (Raylib.IsKeyDown(KeyboardKey.Left))
            {

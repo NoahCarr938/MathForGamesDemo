@@ -97,6 +97,8 @@ namespace MathForGamesDemo
         public virtual void Start() 
         {
             _started = true;
+
+            Transform.UpdateTransforms();
         }
 
         public virtual void Update(double deltaTime) 
